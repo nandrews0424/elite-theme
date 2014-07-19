@@ -35,7 +35,7 @@
 }
 body {
   font-family: 'Jura', 'sans-serif';
-  background: #222222 url(/images/Rings_Closeup2.jpg);
+  background: #222222 url(../images/Rings_Closeup2.jpg);
   background-size: cover;
   color: rgba(247, 247, 247, 0.85);
   padding: 3em;
