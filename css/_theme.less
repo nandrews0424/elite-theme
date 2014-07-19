@@ -1,0 +1,153 @@
+@color: fade(#f7f7f7, 85%);
+@color-faded: fade(@color, 30%);
+@background-faded: fade(@color, 10%);
+@border-width: 2px;
+@border-color-bright: @color;
+@border-color: @color-faded;
+
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+body {
+  font-family: 'Jura', 'sans-serif';
+  background: #222 url(/images/Rings_Closeup2.jpg);
+  background-size:cover;
+  color: @color;
+  padding: 3em;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+p {
+  line-height: 1.1;
+}
+
+hr {
+  border:none;
+  height: 3px;
+  .gradientLeftRight(@border-color-bright,0%,fade(@border-color-bright,0),50%);
+}
+
+// handling the 3d transforms for the two sides of the page
+.content {
+  .clearfix;
+  -webkit-perspective: 600px;
+  margin-top:50px;
+  > .main {
+    float: left;
+    width: 70%;
+    -webkit-transform: rotateY(8deg);
+  }
+  > aside {
+    padding-top: 7.5em;
+    width: 29%;
+    float: right;
+    -webkit-transform: rotateY(-8deg);
+  }
+}
+
+.header {
+  h1 { margin-bottom:0; }
+  hr { margin:.1em 0 .3em; }
+  .subheader {
+    color: @color-faded;
+    margin-top:0;
+  }
+}
+
+.pull-right {
+  float:right;
+}
+
+@cell-padding: .5em;
+table {
+  text-transform:uppercase;
+  width: 100%;
+  font-weight:600;
+  border: none;
+
+  tr {
+    td:first-child {
+      padding-left: 1.6em;
+      border-left: solid 1px @color-faded;
+    }
+
+    &.highlight td, &:hover td {
+      background: @background-faded;
+    }
+  }
+
+  td {
+    cursor: pointer;
+    padding: @cell-padding;
+    border-right: solid 1px @color-faded;
+  }
+
+  thead, tr.subheader {
+    td:first-child {
+      padding-left:@cell-padding;
+    }
+
+    &:hover td {
+      background:none;
+    }
+  }
+
+  tr.subheader {
+    &.separator td {
+      border-top: solid 2px @color;
+      &.spacer { border-top: none; }
+    }
+
+    td {
+      padding-top: @cell-padding;
+      color: @color-faded;
+    }
+  }
+
+  thead tr td {
+    border-top: solid 2px @color-faded;
+    border-right: solid 1px @color-faded;
+    border-bottom: solid 4px @color !important;
+    border-left: none;
+    &:first-child {
+      border-left: solid 1px @color-faded;
+    }
+    padding: 1em @cell-padding @cell-padding;
+  }
+
+  thead td.spacer, tr td.spacer {
+    border-left:none;
+    border-top:none;
+    border-bottom:none !important;
+    background:none;
+    width: .1em;
+  }
+
+  tr:last-child td {
+    border-bottom: solid 2px @color-faded;
+  }
+}
+
+
+// general styles for the sidebar
+aside {
+  hr {
+    .gradientLeftRight(@border-color-bright,0%,fade(@border-color-bright,0),80%);
+  }
+
+}
